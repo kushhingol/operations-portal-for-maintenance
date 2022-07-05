@@ -1,0 +1,16 @@
+.dashboard-form-container {
+  width: 80%;
+  margin: 16px;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 30px 50px -10px rgba(150, 170, 180, 0.5);
+}
+
+.dashboard-button-container {
+  display: flex;
+  align-items: center;
+}
+
+.dashboard-button-container > button {
+  margin-right: 8px;
+}
