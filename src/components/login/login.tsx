@@ -1,19 +1,22 @@
 import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Spinner } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import { UserCredentials } from "../../apis/api.types";
 import { loginUser } from "../../apis/validation.api";
 import "./login.css";
+import "../dashboard/dashboard.css";
 
 export const Login: React.FC = () => {
   let history = useHistory();
   const [isLoginError, setIsLoginError] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const handleFormSubmission = (event: any) => {
     event.preventDefault();
     const loginCredentials: UserCredentials = {
       email: event.target[0].value,
       password: event.target[1].value,
     };
+    setIsLoading(true);
     loginUser(loginCredentials)
       .then((responseData) => {
         if (responseData.body.token) {
@@ -23,6 +26,9 @@ export const Login: React.FC = () => {
       })
       .catch((err) => {
         setIsLoginError(true);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
@@ -44,9 +50,16 @@ export const Login: React.FC = () => {
             {isLoginError && (
               <p className="text-danger">Invalid Credentails </p>
             )}
-            <Button variant="primary" type="submit">
-              Submit
-            </Button>
+            <div className="dashboard-button-container">
+              <Button variant="primary" type="submit">
+                Submit
+              </Button>
+              {isLoading && (
+                <Spinner animation="border" role="status">
+                  <span className="visually-hidden">Loading...</span>
+                </Spinner>
+              )}
+            </div>
           </Form>
         </div>
       </div>
