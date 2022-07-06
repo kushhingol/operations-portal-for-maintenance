@@ -20,10 +20,10 @@ export const Dashboard: React.FC = () => {
     event.preventDefault();
     const addMaintenanceData: AddMaintenanceData = {
       name: event?.target[0]?.value ?? "",
-      startDate: event?.target[1]?.value ?? "",
-      startTime: tConv24(event?.target[2]?.value ?? ""),
-      endDate: event?.target[3]?.value ?? "",
-      endTime: tConv24(event?.target[4]?.value ?? ""),
+      start_date: event?.target[1]?.value ?? "",
+      start_time: tConv24(event?.target[2]?.value ?? ""),
+      end_date: event?.target[3]?.value ?? "",
+      end_time: tConv24(event?.target[4]?.value ?? ""),
     };
     setIsLoading(true);
     addMaintenance(addMaintenanceData)
