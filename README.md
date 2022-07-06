@@ -5,7 +5,7 @@ An Application which will help the operations team to add maintenance work timel
 
 In the project directory, you can run:
 
-### `bash setup.sh`
+### `bash setup_env.sh`
 
 This will set all the necessary env variables
 
